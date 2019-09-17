@@ -1,4 +1,4 @@
-
+"use strict";
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,9 +11,20 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
-}
+	let x = (b**2)-(4*a*c);
+		
+	if (x < 0) {
+		console.log("Пустой массив");
+	} else if 
+		(x === 0) {
+	    console.log("Корень один");
+	} else {
+        console.log("Существуют 2 решения");
+        }
+	return x;
+	}
+    
+getResult(a,b,c);
 
 function calculateAverageRating(){
     let marks = window.marks.value.split("").map(Number).filter((n)=> !isNaN(n) && n > 0);
@@ -22,19 +33,39 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    // код для задачи №2 писать здесь
-    //return averageMark;
-}
 
-function calculateDrinkTask(){
+	if (marks.length > 5) {
+		console.log("Оценок больше 5");
+		}
+		let newMarks = marks.splice(0, 5);
+
+	for (let i = 0; i <= newMarks.length; i++) {
+		
+		let sumMarks += arr(i);
+	}
+	averageMark = sumMarks / arr.length;
+    return averageMark;
+}
+getAverageMark();
+
+function calculateDrinkTask() {
     let name = window.personName.value;
     let dateOfBirthday = new Date(window.dateOfBirthday.value);
     let drink = askDrink(name, dateOfBirthday);
     window.drink.textContent = drink;
 }
 
-function askDrink(name,dateOfBirthday){
-    // код для задачи №3 писать здесь
-    //console.log(result)
-    //return result;
+function askDrink(name, dateOfBirthday) {
+	let yearOfBirthday = dateOfBirthday.getFullYear();
+	let today = new Date();
+	let year = today.getFullYear();
+	if ((year - yearOfBirthday) >= 18) {
+		result = ("Не желаете ли олд-фэшн, " + name + "?");
+	}else {
+		result = ("Сожалею, " + name + ", но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!");
+	}
+    
+    console.log(result)
+    return result;
 }
+askDrink(name, dateOfBirthday);
