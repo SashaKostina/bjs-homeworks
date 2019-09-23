@@ -16,15 +16,14 @@ function getResult(a,b,c){
 		let x = [];		
 	if (d < 0) {
 		console.log("Пустой массив");
-		x = [undefind];
 	} else if 
 		(d === 0) {
 	    console.log("Корень один");
 	    x[0] = (-b)/(2*a);
 	} else {
         console.log("Существуют 2 решения");
-        x[0] = -b/(2*a)+Math.sqrt(d)/(2*a);
-        x[1] = -b/(2*a)-Math.sqrt(d)/(2*a);
+        x[0] = (-b+Math.sqrt(d))/(2*a);
+        x[1] = (-b-Math.sqrt(d))/(2*a);
         }
 	return x;
 	}
@@ -46,7 +45,7 @@ function getAverageMark(marks){
 		let newMarks = marks.splice(0, 5);
 		let sumMarks = 0;
 
-	for (let i = 0; i <= newMarks.length; i++) {
+	for (let i = 0; i < newMarks.length; i++) {
 		
 		sumMarks += newMarks[i];
 	}
@@ -66,9 +65,9 @@ function calculateDrinkTask() {
 function askDrink(name, dateOfBirthday) {
 	let age = new Date().getFullYear() - dateOfBirthday.getFullYear();
 	if (age >= 18) {
-		result = ("Не желаете ли олд-фэшн, " + name + "?");
+		result = (`Не желаете ли олд-фэшн, ${name} ?`);
 	}else {
-		result = ("Сожалею, " + name + ", но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!");
+		result = (`Сожалею, ${name} , но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`);
 	}
     console.log(result)
     return result;
