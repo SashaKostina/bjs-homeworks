@@ -1,3 +1,5 @@
+"use strict";
+
 function calculateMortgage() {
     let percent = window.percent.value;
     let contribution = window.contribution.value;
@@ -10,10 +12,22 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
+       	if (typeof percent !== "number") { percent = parseInt(percent) };
+     	if (typeof contribution !== "number") { contribution = parseInt(contribution)};
+     	if (typeof amount !== "number") {amount = parseInt(amount)};
+     if (percent || contribution || amount) !== Number {
+     	return `Параметр содержит неправильное значение`;
+     }
+      date = date.getFullYear() - new Date().getFullYear();
+      let p = parseInt((percent / 12)/100);
+      let payment = amount * (p + p/(((1 + p)**date) - 1));
+      let totalAmount = payment * date;
+      console.log(totalAmount);
+      return totalAmount;
+     }
+        
 
-    // код для задачи №1 писать здесь
-    //return totalAmount;
-}
+
 
 function sayHello() {
     let name = window.personName.value;
@@ -23,6 +37,11 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+    if (typeof name === 'string') {
+    	greeting = (`Привет, мир! Меня зовут ${name}`);
+    } else {
+    	greeting = (`Привет, мир! Меня зовут Аноним`);
+    }
+
+    return greeting;
 }
