@@ -3,24 +3,24 @@ function getSolutions (a, b, c) {
 	let x = [];
 	if (d < 0) {
         console.log("Уравнение не имеет вещественных корней");
-        return {D: d};
-	}
-	else if (d === 0) {
-      x[0] = (-b)/(2*a);
-      console.log(`Уравнение имеет один корень X₁ = ${x[0]}`);
-      return {roots: x, D: d};
-	} else {
-	  x[0] = (-b+Math.sqrt(d))/(2*a);
-	  x[1] = (-b-Math.sqrt(d))/(2*a);
+        return d;
+	  } else if (d === 0) {
+        x[0] = (-b)/(2*a);
+        console.log(`Уравнение имеет один корень X₁ = ${x[0]}`);
+        return [x, d];
+      } else {
+	    x[0] = (-b+Math.sqrt(d)) / (2*a);
+	    x[1] = (-b-Math.sqrt(d)) / (2*a);
 		console.log(`Уравнение имеет два корня. X₁ = ${x[0]}, X₂ = ${x[1]}`);
-		return {roots: x, D: d};
-	}
+		return [x, d];
+	  }
 }
 
 function showSolutionsMessage(a, b, c) {
 	let result = getSolutions(a, b, c);
 	console.log(`Вычисляем корни квадратного уравнения ${a}*x^2 + (${b})*x + (${c})`);
-    console.log(`Значение дискриминанта: ${result}`);
+    console.log(`Значение дискриминанта: ${result.d}`);
+    console.log(`Корни: ${result.x}`);
 }
 
 
@@ -34,17 +34,31 @@ let data = {
 function getAverageScore (data) {
 	
 	function averageMarks () {
-      let averageObject = [];
-      for (let object in data) {
-      	let value = 0;
-      	let t = 0; 
-      	for (let i = 0; i < data[object].length; i++) {
-      		value[t] += data[object][i];
-      	}
-      	averageObject[object] = value[t]/data[object].length;
+      
+      let oneSubject;
+      for (let subject in data) {
+      	let marks;
+      	let t; 
+      	  for (let i = 0; i <= data[subject].length; i++) {
+      		marks[t] += data[subject][i];
+      	  }
+      	oneSubject[subject] = marks[t] / data[subject].length;
         t++;
+        return oneSubject;
       }
-	}
-	return averageObject;
+    } 
+
+    for (let subject in oneSubject) {
+	  let value = oneSubject[subject];
+	  console.log(`${subject} : ${value}`);
+	  let average = 0;
+      for (let i = 0; i <= oneSubject.length; i++) {
+      average += oneSubject[i]; 
+     }
+    average = average / oneSubject.length;
+    }	
+    return average;
 }
-console.log(averageObject);
+console.log(data);
+console.log(average);
+console.log(oneSubject);
