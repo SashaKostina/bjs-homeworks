@@ -7,8 +7,10 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №1 писать здесь
+	    
 }
+
+
 
 function initPrintAnimalSound() {
     const animal = {
@@ -21,8 +23,14 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №2 писать здесь
+    	if (animal === undefined) {
+			return null;
+		} else {
+		let sound = animal.sound;
+		return sound;
+	}
 }
+
 
 function initCalculateStatement() {
     for (let idx = 0; idx < 3; idx++) {
@@ -33,7 +41,15 @@ function initCalculateStatement() {
         document.getElementById('learner-' + idx + '-average').innerHTML = average;
     }
 }
-
+let t = 0;
+let sumMarks = [];
 function getAverageMark(marks) {
-    // код для задачи №3 писать здесь
+    for (let i = 0; i < marks[t]; i++) {
+    	sumMarks[t] += marks[t][i];
+    }
+    average[t] = sumMarks / marks[t];
+    let roundedAverage = Math.round(average[t]);
+    t++;
+    return roundedAverage;
 }
+console.log(roundedAverage);
