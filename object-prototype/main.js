@@ -7,7 +7,16 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-	    
+	   let now = new Date().getTime();
+       let date = new Date();
+       birthday = date.getTime();
+       let diff = now - birthday;
+       let age = diff / (24 * 3600 * 365.25 * 1000);
+       if (age > 18) {
+        return true;
+       } else {
+        return false;
+       }
 }
 
 
@@ -41,9 +50,10 @@ function initCalculateStatement() {
         document.getElementById('learner-' + idx + '-average').innerHTML = average;
     }
 }
-let t = 0;
-let sumMarks = [];
+
 function getAverageMark(marks) {
+    let t = 0;
+    let sumMarks = [];
     for (let i = 0; i < marks[t]; i++) {
     	sumMarks[t] += marks[t][i];
     }

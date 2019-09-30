@@ -12,10 +12,7 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-       	if (typeof percent !== "number") { percent = parseInt(percent) };
-     	if (typeof contribution !== "number") { contribution = parseInt(contribution)};
-     	if (typeof amount !== "number") {amount = parseInt(amount)};
-     if (percent || contribution || amount) !== Number {
+       	if (isNan(percent) || isNan(contribution) || isNan(amount)) {
      	return `Параметр содержит неправильное значение`;
      }
       date = date.getFullYear() - new Date().getFullYear();
